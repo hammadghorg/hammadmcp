@@ -1,0 +1,12 @@
+{
+  "name": "MCP Registry",
+  "version": "1.0.0",
+  "servers": [
+    {
+      "name": "GitHub Copilot MCP Server",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "status": "approved",
+      "description": "Official GitHub Copilot Model Context Protocol server"
+    }
+  ]
+}
