@@ -1,0 +1,118 @@
+{
+	"servers": {
+		"github": {
+			"type": "http",
+			"url": "https://api.githubcopilot.com/mcp/",
+			"gallery": true,
+			"version": "0.0.1"
+		},
+		"my_weather_mcp": {
+			"url": "https://mcpserver01-fqb9dvayaea7hken.canadacentral-01.azurewebsites.net/weather/mcp",
+			"type": "http"
+		},
+		"my_math_mcp": {
+			"url": "http://localhost:8000/math/mcp",
+			"type": "http"
+		},
+		"microsoft/azure-devops-mcp": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"-y",
+				"@azure-devops/mcp",
+				"${input:ado_org}",
+				"-d",
+				"${input:ado_domain}"
+			],
+			"gallery": "https://api.mcp.github.com/v0/servers/0348a3b3-6f52-4664-9eb7-bf732f71c144",
+			"version": "1.0.0"
+		},
+		"ado": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"-y",
+				"@azure-devops/mcp",
+				"${input:ado_org}"
+			]
+		},
+		"azure/azure-mcp": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"-y",
+				"@azure/mcp@latest",
+				"server",
+				"start",
+				"--namespace",
+				"${input:azure_mcp_namespace}",
+				"@azure/mcp@latest"
+			],
+			"env": {
+				"AZURE_TENANT_ID": "${input:azure_tenant_id}",
+				"AZURE_CLIENT_ID": "${input:azure_client_id}",
+				"AZURE_CLIENT_SECRET": "${input:azure_client_secret}",
+				"AZURE_SUBSCRIPTION_ID": "${input:azure_subscription_id}",
+				"AZURE_MCP_COLLECT_TELEMETRY": "${input:azure_mcp_collect_telemetry}"
+			},
+			"gallery": "https://api.mcp.github.com/v0/servers/6cf2c8d0-6872-406b-bdeb-495272df709d",
+			"version": "1.0.0"
+		}
+	},
+	"inputs": [
+		{
+			"id": "ado_org",
+			"type": "promptString",
+			"description": "Azure DevOps organization name (e.g., contoso).",
+			"password": false
+		},
+		{
+			"id": "ado_domain",
+			"type": "promptString",
+			"description": "Repeat to enable specific domains: core, work, work-items, search, test-plans, repositories, wiki, pipelines, advanced-security.",
+			"password": false
+		},
+		{
+			"id": "api_key",
+			"type": "promptString",
+			"description": "your API key",
+			"password": true
+		},
+		{
+			"id": "azure_mcp_namespace",
+			"type": "promptString",
+			"description": "Scope to a specific set of tools (e.g., bestpractices). Leave empty for all.",
+			"password": false
+		},
+		{
+			"id": "azure_tenant_id",
+			"type": "promptString",
+			"description": "Tenant ID (for service principal / workload identity auth).",
+			"password": false
+		},
+		{
+			"id": "azure_client_id",
+			"type": "promptString",
+			"description": "Client ID (service principal or managed identity).",
+			"password": false
+		},
+		{
+			"id": "azure_client_secret",
+			"type": "promptString",
+			"description": "Client secret (if using service principal secret).",
+			"password": true
+		},
+		{
+			"id": "azure_subscription_id",
+			"type": "promptString",
+			"description": "Optional: prefer a specific subscription by default.",
+			"password": false
+		},
+		{
+			"id": "azure_mcp_collect_telemetry",
+			"type": "promptString",
+			"description": "Set to 'false' to opt out of telemetry (default is true).",
+			"password": false
+		}
+	]
+}
