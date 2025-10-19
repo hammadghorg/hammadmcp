@@ -4,7 +4,6 @@
 			"type": "http",
 			"url": "https://api.githubcopilot.com/mcp/",
 			"gallery": true,
-			"version": "0.0.1"
 		},
 		"my_weather_mcp": {
 			"url": "https://mcpserver01-fqb9dvayaea7hken.canadacentral-01.azurewebsites.net/weather/mcp",
